@@ -1,0 +1,31 @@
+{
+  "name": "scrapademic",
+  "version": "1.0.0",
+  "description": "Academic profile scraper (Google Scholar, etc.)",
+  "keywords": [
+    "Scrapper",
+    "Schoalr",
+    "Researchgate",
+    "Academic"
+  ],
+  "homepage": "https://github.com/tesla1618/scrapademic#readme",
+  "bugs": {
+    "url": "https://github.com/tesla1618/scrapademic/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tesla1618/scrapademic.git"
+  },
+  "license": "MIT",
+  "author": "Rajieb R.",
+  "type": "module",
+  "main": "index.mjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "puppeteer": "^24.6.1",
+    "puppeteer-extra": "^3.3.6",
+    "puppeteer-extra-plugin-stealth": "^2.11.2"
+  }
+}
