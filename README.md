@@ -140,7 +140,7 @@ Made with 🧠 by [Rajieb R.](https://github.com/tesla1618)
 
 ## 📄 License
 
-MIT — free to use, modify, and share.
+GNU General Public License v3.0 — free to use, modify, and share.
 
 ---
 
