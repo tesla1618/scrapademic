@@ -1,30 +1,39 @@
-import { Command } from "commander";
-import { scrapeScholar } from "../index.mjs";
-
-const program = new Command();
+import { program } from "commander";
+import { scrapeScholar } from "../lib/scholar.js";
+import pkg from "../package.json" assert { type: "json" };
 
 program
   .name("scrapademic")
-  .description("Scrape Google Scholar profiles")
-  .argument("<userId>", "Google Scholar User ID")
-  .option("-y, --year", "Sort by year")
-  .option("-c, --citations", "Sort by citations")
-  .option("-a, --all", "Get all publications")
-  .option("-r, --recent", "Only get recent publications (default: 6)")
+  .description("Scrape Google Scholar profiles from the command line")
+  .version(pkg.version)
+  .argument("<userId>", "Google Scholar user ID")
+  .option("-y, --year", "Sort by year instead of citations")
+  .option("-a, --all", "Scrape all publications (default)")
+  .option("-r, --recent", "Scrape only recent publications")
+  .option(
+    "-l, --limit <number>",
+    "Number of results if using --recent",
+    parseInt
+  )
+  .option("--no-stealth", "Disable stealth mode")
   .action(async (userId, options) => {
-    const sort = options.citations ? "citations" : "year";
-    const fullList = options.all ? true : false;
+    const sortBy = options.year ? "year" : "citations";
+    const allPublications = options.recent ? false : true;
+    const limit = options.limit || 6;
+    const useStealth = options.stealth !== false;
 
     try {
-      const publications = await scrapeScholar({
-        userId,
-        sortBy: sort,
-        getAll: fullList,
+      const results = await scrapeScholar(userId, {
+        sortBy,
+        allPublications,
+        limit,
+        useStealth,
       });
 
-      console.log(JSON.stringify(publications, null, 2));
-    } catch (error) {
-      console.error("❌ Error:", error.message);
+      console.log(JSON.stringify(results, null, 2));
+    } catch (err) {
+      console.error("Error scraping:", err.message);
+      process.exit(1);
     }
   });
 
