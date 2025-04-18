@@ -1,11 +1,11 @@
+#!/usr/bin/env node
 import { program } from "commander";
 import { scrapeScholar } from "../lib/scholar.js";
-const pkg = require("../package.json");
 
 program
   .name("scrapademic")
   .description("Scrape Google Scholar profiles from the command line")
-  .version(pkg.version)
+  .version("1.0.2")
   .argument("<userId>", "Google Scholar user ID")
   .option("-y, --year", "Sort by year instead of citations")
   .option("-a, --all", "Scrape all publications (default)")
