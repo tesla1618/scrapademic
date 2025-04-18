@@ -1,6 +1,6 @@
 {
   "name": "scrapademic",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Academic profile scraper (Google Scholar, etc.)",
   "keywords": [
     "Scrapper",
