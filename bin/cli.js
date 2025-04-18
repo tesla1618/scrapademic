@@ -1,6 +1,6 @@
 import { program } from "commander";
 import { scrapeScholar } from "../lib/scholar.js";
-import pkg from "../package.json" assert { type: "json" };
+const pkg = require("../package.json");
 
 program
   .name("scrapademic")
